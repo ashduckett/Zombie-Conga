@@ -80,3 +80,30 @@ extension CGPoint {
         return atan2(y, x)
     }
 }
+
+
+let π = CGFloat.pi
+
+// Returns the shortest angle between two angles
+func shortestAngleBetween(angle1: CGFloat, angle2: CGFloat) -> CGFloat {
+    let twoπ = π * 2
+    
+    var angle = (angle2 - angle1).truncatingRemainder(dividingBy: twoπ)
+    
+    if angle >= π {
+        angle = angle - twoπ
+    }
+    
+    if angle <= -π {
+        angle = angle + twoπ
+    }
+    return angle
+}
+
+extension CGFloat {
+    func sign() -> CGFloat {
+        return self >= 0.0 ? 1.0 : -1.0
+    }
+}
+
+

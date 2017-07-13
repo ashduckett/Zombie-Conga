@@ -15,6 +15,10 @@ class GameScene: SKScene {
     let zombieMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPoint.zero
     let playableRect: CGRect
+    let zombieRotateRadiansPerSec: CGFloat = 4.0 * CGFloat.pi
+    
+    // Store the last place the player touched the scene
+    var lastTouchLocation: CGPoint?
     
     override init(size: CGSize) {
         let maxAspectRatio: CGFloat = 16.0 / 9
@@ -52,12 +56,71 @@ class GameScene: SKScene {
         
         lastUpdateTime = currentTime
       
-        move(sprite: zombie, velocity: velocity)
-        boundsCheckZombie()
-        rotate(sprite: zombie, direction: velocity)
+        // Here we want to get the distance between the last touch location and the zombie. This is the first step.
+        
+        // lastTouchLocation is essentially a vector from the origin to the touch
+        // zombie.position gives us a vector from the origin to the zombie
+        
+        // Find the offset vector
+        
+        if let lastTouchLocation = lastTouchLocation {
+            let offsetVector = lastTouchLocation - zombie.position
+            let distance = offsetVector.length()
+            print("The distance is: \(distance)")
+        
+            // How much will the zombie move this frame?
+            let aboutToMoveDistance = zombieMovePointsPerSec * CGFloat(dt)
+            
+            if distance <= aboutToMoveDistance {
+                zombie.position = lastTouchLocation
+                velocity = CGPoint.zero
+            } else {
+                move(sprite: zombie, velocity: velocity)
+                boundsCheckZombie()
+                
+                // How do we get a current angle vs. a target angle?
+                
+                
+                
+                
+                
+                //let amountToRotate = zombieRotateRadiansPerSec * CGFloat(dt)
+                
+                
+                
+                rotate(sprite: zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
+                
+                // Direction is a CGPoint
+                // Let's get the shortest angle between direction and the target
+                
+                
+                
+               // let shortest = shortestAngleBetween(angle1: zombie.zRotation, angle2: velocity.angle)
+                
+               // let amountToRotate = zombieRotateRadiansPerSec * CGFloat(dt)
+                
+                
+                
+                //var valueToUse = abs(shortest) < amountToRotate ? abs(shortest) : amountToRotate
+                
+                //valueToUse = valueToUse * valueToUse.sign()
+                
+                //rotate(sprite: zombie, direction: velocity, rotateRadiansPerSec: valueToUse)
+            
+            
+                // Currently, rotation works by taking the angle of the velocity.
+            
+            
+            }
+        
+        }
+        
+        
+        
+        
+        
+        
     }
-    
-    
     
     func move(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = velocity * CGFloat(dt)
@@ -67,12 +130,12 @@ class GameScene: SKScene {
     func moveZombueToward(location: CGPoint) {
         let offset = location - zombie.position
         let direction = offset.normalized()
-        
         velocity = direction * zombieMovePointsPerSec
     }
     
-    
     func sceneTouched(touchLocation: CGPoint) {
+        lastTouchLocation = touchLocation
+        print("Obtained touch location: \(lastTouchLocation!)")
         moveZombueToward(location: touchLocation)
     }
     
@@ -129,8 +192,15 @@ class GameScene: SKScene {
         addChild(shape)
     }
     
-    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
-        sprite.zRotation = direction.angle
+    func rotate(sprite: SKSpriteNode, direction: CGPoint, rotateRadiansPerSec: CGFloat) {
+        // What goes in here?
+        
+        let shortest = shortestAngleBetween(angle1: sprite.zRotation, angle2: velocity.angle)
+        let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
+        
+        sprite.zRotation += shortest.sign() * amountToRotate
+        //sprite.zRotation = direction.angle //* rotateRadiansPerSec
+        
     }
     
     
