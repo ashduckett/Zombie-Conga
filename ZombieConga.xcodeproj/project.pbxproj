@@ -21,6 +21,7 @@
 		49AB31C71F18367E00F0C723 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49AB31C21F18367E00F0C723 /* win.wav */; };
 		49B345341F18A1CB0043B656 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B345331F18A1CB0043B656 /* GameOverScene.swift */; };
 		49B345361F18A84A0043B656 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B345351F18A84A0043B656 /* MainMenuScene.swift */; };
+		49B345391F19031A0043B656 /* GLIMSTIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 49B345381F19031A0043B656 /* GLIMSTIC.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		49AB31C21F18367E00F0C723 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		49B345331F18A1CB0043B656 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		49B345351F18A84A0043B656 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		49B345381F19031A0043B656 /* GLIMSTIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GLIMSTIC.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				49AB31C01F18367E00F0C723 /* hitCatLady.wav */,
 				49AB31C11F18367E00F0C723 /* lose.wav */,
 				49AB31C21F18367E00F0C723 /* win.wav */,
+				49B345381F19031A0043B656 /* GLIMSTIC.TTF */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B345391F19031A0043B656 /* GLIMSTIC.TTF in Resources */,
 				495022181F14551900334D03 /* Main.storyboard in Resources */,
 				49AB31C71F18367E00F0C723 /* win.wav in Resources */,
 				49AB31C41F18367E00F0C723 /* hitCat.wav in Resources */,
